@@ -47,6 +47,8 @@ contract Airdrop is ReentrancyGuard {
     function addWhitelist(address[] memory _users) public onlyOwner {
         for(uint16 i = 0; i < _users.length; i++) {
             require(_users[i] != address(0), 'Invalid address.');
+            require(!whitelistByAddress[_users[i]], 'The address is already on the whitelist.');
+
             whitelistByAddress[_users[i]] = true;
             claimReadyByAddress[_users[i]] = block.timestamp + cooldownTime;
             pendingBalanceByAddress[_users[i]] = rewardAmountPerAddress;
