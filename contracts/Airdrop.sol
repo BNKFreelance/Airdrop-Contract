@@ -8,7 +8,7 @@ contract Airdrop is ReentrancyGuard {
     address public owner;
     IERC20 public token;
     uint256 public rewardAmountPerAddress;
-    uint256 public cooldownTime = 1 minutes;
+    uint256 public cooldownTime = 30 days;
 
     mapping(address => bool) public whitelistByAddress;
     mapping(address => uint256) public pendingBalanceByAddress;
